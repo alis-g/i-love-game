@@ -15,6 +15,23 @@ export default function Details() {
         .catch(err => alert(err))
     }, [gameId]);
 
+    const deleteGameClickHandler = async (e) => {
+        e.preventDefault()
+
+        const confirmed = confirm(`Are you sure you want to delete ${game.title} game?`)
+
+        if(!confirmed){
+            return
+        }
+
+        try {
+            await request(`/games?id=eq.${gameId}`, 'DELETE')
+            navigate('/catalog')
+        } catch (error) {
+            alert(error)
+        }
+        
+    }
     return (
         <section id="game-details">
             <h1>Game Details</h1>
@@ -52,7 +69,7 @@ export default function Details() {
                     <a href="#" className="button">
                         Edit
                     </a>
-                    <a href="#" className="button">
+                    <a href="#" className="button" onClick={deleteGameClickHandler}>
                         Delete
                     </a>
                 </div>
