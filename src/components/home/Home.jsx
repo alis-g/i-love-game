@@ -24,7 +24,7 @@ export default function Home() {
                     <div className="home-container">
                         {latestGames.length > 0 
                         ? latestGames.map(latestGame => <GameCard key={latestGame.id} {...latestGame} />)
-                        : <p class="no-articles">No games yet</p>
+                        : <p className="no-articles">No games yet</p>
                     }
                     </div>
                 </div>

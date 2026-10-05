@@ -5,7 +5,7 @@ import GameCard from "../game-card/GameCard";
 export default function Catalog() {
     const [games, setGames] = useState([])
     useEffect(() => {
-        request("/games?order=created_at.desc")
+        request("/games?order=created_at.desc", "GET", null)
             .then(setGames)
             .catch(err => alert(err))
     }, [])
