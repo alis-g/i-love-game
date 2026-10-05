@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Header from './components/header/Header'
 import Home from './components/home/Home'
 import Footer from './components/footer/Footer'
+import { Route, Routes } from 'react-router'
+import Catalog from './components/catalog/Catalog'
 
 
 function App() {
@@ -9,9 +11,14 @@ function App() {
 
   return (
     <>
-    <Header />
-    <Home />
-    <Footer />
+      <Header />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/catalog' element={<Catalog />} />
+      </Routes>
+
+      <Footer />
     </>
   )
 }
