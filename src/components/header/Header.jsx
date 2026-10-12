@@ -9,13 +9,13 @@ export default function Header() {
     <Link to='/catalog'>Catalog</Link>
     {/* Logged-in users */}
     <div id="user">
-      <a href="#">Add Game</a>
-      <a href="#">Logout</a>
+      <a href="/add-game">Add Game</a>
+      <a href="/login">Logout</a>
     </div>
     {/* Guest users */}
     <div id="guest">
-      <a href="#">Login</a>
-      <a href="#">Register</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
     </div>
   </nav>
 </header>
