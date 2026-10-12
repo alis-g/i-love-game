@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer'
 import { Route, Routes } from 'react-router'
 import Catalog from './components/catalog/Catalog'
 import Details from './components/details/Details'
+import Login from './components/login/Login'
 import Register from './components/register/Register'
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/games/:gameId' element={<Details />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
 
