@@ -11,7 +11,11 @@ import Create from './components/create/Create'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null)
+
+  const userAuthHandler = (userData) => {
+    setUser(userData)
+  }
 
   return (
     <>
@@ -22,7 +26,7 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/games/:gameId' element={<Details />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/register' element={<Register onRegister={userAuthHandler} user={user}/>} />
         <Route path='/add-game' element={<Create />} />
       </Routes>
 
