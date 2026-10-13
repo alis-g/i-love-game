@@ -25,9 +25,9 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/games/:gameId' element={<Details />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register onRegister={userAuthHandler} user={user}/>} />
-        <Route path='/add-game' element={<Create onLogin={userAuthHandler} user={user}/>} />
+        <Route path='/login' element={<Login onLogin={userAuthHandler}/>} />
+        <Route path='/register' element={<Register onRegister={userAuthHandler} />} />
+        <Route path='/add-game' element={<Create  />} />
       </Routes>
 
       <Footer />
