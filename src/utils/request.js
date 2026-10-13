@@ -1,4 +1,4 @@
-const url = 'https://mjwdadmkprxoobcrtvzj.supabase.co/rest/v1/'
+const url = 'https://mjwdadmkprxoobcrtvzj.supabase.co/rest/v1'
 
 export async function request(path = '/', method = 'GET', data = null, opts = {} ) {
     const options = {

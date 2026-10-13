@@ -30,7 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
-        <Route path='/games/:gameId' element={<Details />} />
+        <Route path='/games/:gameId' element={<Details user = {user} />} />
         <Route path='/login' element={<Login onLogin={userAuthHandler}/>} />
         <Route path='/logout' element={<Logout onLogout={logoutAction}/>} />
         <Route path='/register' element={<Register onRegister={userAuthHandler} />} />
