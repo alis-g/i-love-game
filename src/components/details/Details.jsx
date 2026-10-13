@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { request } from "../../utils/request.js";
 import { Link, useNavigate, useParams } from "react-router";
 import CreateComment from "../create-comment/CreateComment.jsx";
+import CommentsList from "../comments-list/CommentsList.jsx";
 
 export default function Details({
     user,
@@ -76,24 +77,7 @@ export default function Details({
                         Delete
                     </a>
                 </div>
-                <div className="details-comments">
-                    <h2>Comments:</h2>
-                    <ul>
-                        <li className="comment">
-                            <p>
-                                Content: A masterpiece of world design, though the boss fights are
-                                brutal.
-                            </p>
-                        </li>
-                        <li className="comment">
-                            <p>
-                                Content: Truly feels like a next-gen evolution of the Souls formula!
-                            </p>
-                        </li>
-                    </ul>
-                    {/* Display paragraph: If there are no games in the database */}
-                    {/* <p class="no-comment">No comments.</p> */}
-                </div>
+                <CommentsList gameId={gameId}/>
             </div>
             {/* Add Comment ( Only for logged-in users, which is not creators of the current game ) */}
             {user && <CreateComment user = {user} gameId = {gameId}/> }
