@@ -13,7 +13,7 @@ export default function Header({
                     ?
                     (<div id="user">
                         <a href="/add-game">Add Game</a>
-                        <a href="/login">Logout</a>
+                        <a href="/logout">Logout</a>
                     </div>)
                     : (
                         <div id="guest">

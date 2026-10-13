@@ -8,6 +8,7 @@ import Details from './components/details/Details'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Create from './components/create/Create'
+import Logout from './logout/Logout'
 
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
 
   const userAuthHandler = (userData) => {
     setUser(userData)
+  }
+
+  const logoutAction = () => {
+    setUser(null)
   }
 
   return (
@@ -26,6 +31,7 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/games/:gameId' element={<Details />} />
         <Route path='/login' element={<Login onLogin={userAuthHandler}/>} />
+        <Route path='/logout' element={<Logout onLogout={logoutAction}/>} />
         <Route path='/register' element={<Register onRegister={userAuthHandler} />} />
         <Route path='/add-game' element={<Create  />} />
       </Routes>
