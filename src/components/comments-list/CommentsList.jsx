@@ -4,15 +4,16 @@ import { useParams } from "react-router";
 import CommentItem from "./comment-item/CommentItem";
 
 export default function CommentsList({
-    gameId
+    gameId,
+    refresh
 }) {
 
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        request(`/comments?game_id=eq.${gameId}`)
+        request(`/comments?game_id=eq.${gameId}&order=created_at.desc`)
         .then(result => setComments(result))
-    },[gameId])
+    },[gameId, refresh])
     return (
         <>
             <div className="details-comments">
