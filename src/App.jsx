@@ -33,7 +33,7 @@ function App() {
         <Route path='/login' element={<Login onLogin={userAuthHandler}/>} />
         <Route path='/logout' element={<Logout onLogout={logoutAction}/>} />
         <Route path='/register' element={<Register onRegister={userAuthHandler} />} />
-        <Route path='/add-game' element={<Create  />} />
+        <Route path='/games/create' element={<Create  />} />
       </Routes>
 
       <Footer />

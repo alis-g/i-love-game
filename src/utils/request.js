@@ -3,7 +3,8 @@ const url = 'https://mjwdadmkprxoobcrtvzj.supabase.co/rest/v1/'
 export async function request(path = '/', method = 'GET', data = null, opts = {} ) {
     const options = {
         headers: {
-            apiKey: import.meta.env.VITE_API_KEY
+            apiKey: import.meta.env.VITE_API_KEY,
+            Prefer: 'return=representation'
         },
         ...opts
     }
@@ -23,9 +24,9 @@ export async function request(path = '/', method = 'GET', data = null, opts = {}
         throw new Error(`HTTP error! status ${res.status}`)
     }
 
-    if(res.status === 204){
-        return null
-    }
+    // if(res.status === 204){
+    //     return null
+    // }
 
     return res.json()
 }

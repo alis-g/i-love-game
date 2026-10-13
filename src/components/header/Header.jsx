@@ -12,7 +12,7 @@ export default function Header({
                 {isAuth
                     ?
                     (<div id="user">
-                        <a href="/add-game">Add Game</a>
+                        <a href="/games/create">Add Game</a>
                         <a href="/logout">Logout</a>
                     </div>)
                     : (
