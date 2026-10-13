@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header isAuth = {!!user} />
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path='/games/:gameId' element={<Details />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register onRegister={userAuthHandler} user={user}/>} />
-        <Route path='/add-game' element={<Create />} />
+        <Route path='/add-game' element={<Create onLogin={userAuthHandler} user={user}/>} />
       </Routes>
 
       <Footer />
