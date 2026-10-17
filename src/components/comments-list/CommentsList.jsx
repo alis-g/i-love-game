@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { request } from "../../utils/request";
-import { useParams } from "react-router";
 import CommentItem from "./comment-item/CommentItem";
+import request from "../../utils/request";
 
 export default function CommentsList({
     gameId,

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { request } from "../../utils/request.js";
+
 import { useNavigate } from "react-router";
+import request from "../../utils/request";
 const initialValues = {
     title: '',
     genre: '',

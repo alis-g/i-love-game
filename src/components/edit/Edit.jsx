@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { request } from "../../utils/request";
+import request from "../../utils/request";
+
 
 const initialValues = {
 	title: '',

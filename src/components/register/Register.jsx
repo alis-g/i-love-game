@@ -1,12 +1,8 @@
-import { useState } from "react"
-import { useNavigate } from "react-router"
+
 
 export default function Register({
     onRegister
 }) {
-
-    const navigate = useNavigate()
-
     const registerAction = (formData) => {
         const email = formData.get('email')
         const password = formData.get('password')
@@ -22,9 +18,7 @@ export default function Register({
             return
         }
 
-        onRegister({email})
-
-        navigate("/")
+        onRegister({email, password})
 
     }
     return (

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { request } from "../../utils/request.js";
+
 import { Link, useNavigate, useParams } from "react-router";
 import CreateComment from "../create-comment/CreateComment.jsx";
 import CommentsList from "../comments-list/CommentsList.jsx";
+import request from "../../utils/request.js";
 
 export default function Details({
     user,

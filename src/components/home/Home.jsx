@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { request } from "../../utils/request";
+
 import GameCard from "../game-card/GameCard";
+import request from "../../utils/request";
 
 export default function Home() {
     const [latestGames, setLatestGames] = useState([])
