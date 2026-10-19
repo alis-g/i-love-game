@@ -4,8 +4,6 @@ export default function Login({
   onLogin 
 }) {
 
-  const navigate = useNavigate()
-
   const loginAction = (formData) => {
     const {email, password} = Object.fromEntries(formData)
     if (!email || !password) {
@@ -13,9 +11,7 @@ export default function Login({
       return
     }
 
-    onLogin({ email })
-
-    navigate('/')
+    onLogin({ email, password })
   }
 
   return (

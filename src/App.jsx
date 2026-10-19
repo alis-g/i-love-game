@@ -27,6 +27,14 @@ function App() {
     }
   }
 
+  const login = async(userData) => {
+    try {
+      const result = await authApi.login(userData)
+      setAuth(result)
+      navigate('/')
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   const logoutAction = () => {
@@ -41,7 +49,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/games/:gameId' element={<Details  />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login onLogin={login} />} />
         <Route path='/logout' element={<Logout onLogout={logoutAction}/>} />
         <Route path='/register' element={<Register onRegister={register} />} />
         <Route path='/games/create' element={<Create  />} />
