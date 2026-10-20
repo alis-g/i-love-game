@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import GameCard from "../game-card/GameCard";
 import request from "../../utils/request";
+import AuthContext from "../../context/auth-context";
 
 export default function Home() {
+    
     const [latestGames, setLatestGames] = useState([])
 
     useEffect(()=> {

@@ -8,9 +8,18 @@ export const getAll = (accessToken) => {
     })
 }
 
+export const create = (data, accessToken) => {
+    return request('/games', 'POST', data, {
+        headers:{
+            ...getAuthHeader(accessToken)
+        }
+    })
+}
+
 
 function getAuthHeader(accessToken) {
     return {
         ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {})
     };
 }
+
