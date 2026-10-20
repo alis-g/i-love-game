@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import GameCard from "../game-card/GameCard";
-import request from "../../utils/request";
+import { gameApi } from "../../api";
+import AuthContext from "../../context/auth-context";
 
 export default function Catalog() {
+    const { accessToken } = useContext(AuthContext)
     const [games, setGames] = useState([])
+    
     useEffect(() => {
-        request("/games?order=created_at.desc", "GET", null)
+        gameApi.getAll(accessToken)
             .then(setGames)
             .catch(err => alert(err))
     }, [])

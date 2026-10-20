@@ -11,6 +11,7 @@ import Create from './components/create/Create'
 import Logout from './logout/Logout'
 import Edit from './components/edit/Edit'
 import { authApi } from './api'
+import AuthContext from './context/auth-context'
 
 
 function App() {
@@ -41,8 +42,16 @@ function App() {
     setAuth(null)
   }
 
+  const contextValue = {
+    accessToken: auth?.access_token,
+    user: auth?.user,
+    isAuthenticated: !!auth,
+    register,
+    login,
+  }
+
   return (
-    <>
+    <AuthContext.Provider value={contextValue}>
       <Header isAuth = {!!auth} />
 
       <Routes>
@@ -58,7 +67,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </>
+    </AuthContext.Provider>
   )
 }
 
