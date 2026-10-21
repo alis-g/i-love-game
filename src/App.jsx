@@ -68,7 +68,7 @@ function App() {
                 <Route path='/games/:gameId/edit' element={<Edit />} />
                 <Route path='/register' element={<Register onRegister={register} />} />
                 <Route path='/login' element={<Login onLogin={login} />} />
-                <Route path='/logout' element={<Logout onLogout={logoutAction} />} />
+                <Route path='/logout' element={<Logout />} />
             </Routes>
 
             <Footer />
