@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import request from "../../utils/request";
+import { gameApi } from "../../api";
+import AuthContext from "../../context/auth-context";
 
 
 const initialValues = {
@@ -13,6 +15,7 @@ const initialValues = {
 }
 
 export default function Edit() {
+	const {accessToken} = useContext(AuthContext)
 	const navigate = useNavigate()
 	const { gameId } = useParams()
 
@@ -31,7 +34,7 @@ export default function Edit() {
 	}, [gameId])
 
 	const editAction = async() => {
-		await request(`/games?id=eq.${gameId}`, 'PUT', game)
+		await gameApi.update(gameId, game, accessToken)
 
 		navigate (`/games/${gameId}`)
 	}
