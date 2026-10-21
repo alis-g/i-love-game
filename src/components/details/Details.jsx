@@ -10,18 +10,20 @@ import AuthContext from "../../context/auth-context.js";
 export default function Details({
 
 }) {
-    const {user, accessToken}= useContext(AuthContext)
+    const { user, accessToken } = useContext(AuthContext)
     const navigate = useNavigate()
-    const {gameId} = useParams()
+    const { gameId } = useParams()
     const [game, setGame] = useState({})
     const [refresh, setRefresh] = useState(false)
 
-    useEffect(()=>{
+    const isOwner = user && user?.id === game?.user_id;
+
+    useEffect(() => {
         request(`/games?id=eq.${gameId}`)
-        .then(result =>{
-            setGame(result[0])
-        })
-        .catch(err => alert(err))
+            .then(result => {
+                setGame(result[0])
+            })
+            .catch(err => alert(err))
     }, [gameId]);
 
     const deleteGameClickHandler = async (e) => {
@@ -29,17 +31,17 @@ export default function Details({
 
         const confirmed = confirm(`Are you sure you want to delete ${game.title} game?`)
 
-        if(!confirmed){
+        if (!confirmed) {
             return
         }
 
         try {
-           await gameApi.remove(gameId, accessToken)
+            await gameApi.remove(gameId, accessToken)
             navigate('/catalog')
         } catch (error) {
             alert(error)
         }
-        
+
     }
     return (
         <section id="game-details">
@@ -74,19 +76,22 @@ export default function Details({
                     </div>
                 </div>
                 {/* Edit/Delete buttons ( Only for creator of this game )  */}
-                <div className="buttons">
-                    <Link to={`/games/${gameId}/edit`} className="button">
-                        Edit
-                    </Link>
-                    <a href="#" className="button" onClick={deleteGameClickHandler}>
-                        Delete
-                    </a>
-                </div>
-                <CommentsList gameId={gameId} refresh = {refresh}/>
+                {isOwner && (
+                    <div className="buttons">
+                        <Link to={`/games/${gameId}/edit`} className="button">
+                            Edit
+                        </Link>
+                        <a href="#" className="button" onClick={deleteGameClickHandler}>
+                            Delete
+                        </a>
+                    </div>
+                )}
+
+                <CommentsList gameId={gameId} refresh={refresh} />
             </div>
             {/* Add Comment ( Only for logged-in users, which is not creators of the current game ) */}
-            {user && <CreateComment user = {user} gameId = {gameId} onCreate={() => setRefresh(state => !state)}/> }
-        
+            {user && <CreateComment user={user} gameId={gameId} onCreate={() => setRefresh(state => !state)} />}
+
         </section>
 
     );
