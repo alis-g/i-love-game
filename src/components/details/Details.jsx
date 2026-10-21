@@ -11,8 +11,8 @@ export default function Details({
 
 }) {
     const {user, accessToken}= useContext(AuthContext)
-    const {gameId} = useParams()
     const navigate = useNavigate()
+    const {gameId} = useParams()
     const [game, setGame] = useState({})
     const [refresh, setRefresh] = useState(false)
 
@@ -34,7 +34,7 @@ export default function Details({
         }
 
         try {
-            gameApi.remove(gameId, accessToken)
+           await gameApi.remove(gameId, accessToken)
             navigate('/catalog')
         } catch (error) {
             alert(error)

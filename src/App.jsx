@@ -15,60 +15,60 @@ import AuthContext from './context/auth-context'
 
 
 function App() {
-  const navigate = useNavigate()
-  const [auth, setAuth] = useState(null)
+    const navigate = useNavigate()
+    const [auth, setAuth] = useState(null)
 
-  const register = async (userData) => {
-    try {
-      const result = await authApi.register(userData)
-      setAuth(result)
-      navigate('/')
-    } catch (error) {
-      alert(error.message)
+    const register = async (userData) => {
+        try {
+            const result = await authApi.register(userData)
+            setAuth(result)
+            navigate('/')
+        } catch (error) {
+            alert(error.message)
+        }
     }
-  }
 
-  const login = async(userData) => {
-    try {
-      const result = await authApi.login(userData)
-      setAuth(result)
-      navigate('/')
-    } catch (error) {
-      alert(error.message)
+    const login = async (userData) => {
+        try {
+            const result = await authApi.login(userData)
+            setAuth(result)
+            navigate('/')
+        } catch (error) {
+            alert(error.message)
+        }
     }
-  }
 
-  const logoutAction = () => {
-    setAuth(null)
-  }
+    const logoutAction = () => {
+        setAuth(null)
+    }
 
-  const contextValue = {
-    accessToken: auth?.access_token,
-    user: auth?.user,
-    isAuthenticated: !!auth,
-    register,
-    login,
-  }
+    const contextValue = {
+        accessToken: auth?.access_token,
+        user: auth?.user,
+        isAuthenticated: !!auth,
+        register,
+        login,
+        
+    }
 
-  return (
-    <AuthContext.Provider value={contextValue}>
-      <Header isAuth = {!!auth} />
+    return (
+        <AuthContext.Provider value={contextValue}>
+            <Header isAuth={!!auth} />
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/catalog' element={<Catalog />} />
-        <Route path='/games/:gameId' element={<Details  />} />
-        <Route path='/login' element={<Login onLogin={login} />} />
-        <Route path='/logout' element={<Logout onLogout={logoutAction}/>} />
-        <Route path='/register' element={<Register onRegister={register} />} />
-        <Route path='/games/create' element={<Create  />} />
-        <Route path='/games/:gameId/edit' element={<Edit />} />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/catalog' element={<Catalog />} />
+                <Route path='/games/create' element={<Create />} />
+                <Route path='/games/:gameId' element={<Details />} />
+                <Route path='/games/:gameId/edit' element={<Edit />} />
+                <Route path='/register' element={<Register onRegister={register} />} />
+                <Route path='/login' element={<Login onLogin={login} />} />
+                <Route path='/logout' element={<Logout onLogout={logoutAction} />} />
+            </Routes>
 
-      </Routes>
-
-      <Footer />
-    </AuthContext.Provider>
-  )
+            <Footer />
+        </AuthContext.Provider>
+    )
 }
 
 export default App
