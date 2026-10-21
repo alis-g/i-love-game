@@ -1,8 +1,10 @@
+import { commentApi } from "../../api"
 import request from "../../utils/request"
 
 
 export default function CreateComment({
     user,
+    accessToken,
     gameId,
     onCreate
 }) {
@@ -10,11 +12,12 @@ export default function CreateComment({
         const comment = {
             text: formData.get('text'),
             author: user?.email,
-            game_id: gameId
+            game_id: gameId,
+            user_id: user?.id
         }
 
         try {
-            await request('/comments', "POST", comment )
+            await commentApi.create(comment, accessToken)
             onCreate()
         } catch (error) {
             alert(error)
@@ -26,8 +29,8 @@ export default function CreateComment({
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" action={addCommentAction}>
-                    <textarea name="text" placeholder="Comment......" defaultValue={""} />
-                    <input className="btn submit" type="submit" defaultValue="Add Comment" />
+                    <textarea name="text" placeholder="Comment......" />
+                    <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
         </>
